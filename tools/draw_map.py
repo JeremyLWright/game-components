@@ -17,5 +17,5 @@ for node in nodes:
         e = pydot.Edge(str(row[0]), str(row[1]), label=str(row[2]))
         graph.add_edge(e)
 
-graph.write_png("mygraph.png")
+graph.write_svg("mygraph.svg")
 
