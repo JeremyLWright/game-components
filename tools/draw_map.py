@@ -8,13 +8,14 @@ nodes = conn.cursor()
 nodes.execute('''select id from nodes''')
 for node in nodes:
     c = conn.cursor()
-    c.execute('''select FR.id, '-->', T.id
+    c.execute('''select FR.id, T.id, edges.weight
                 from edges 
                 join nodes  FR on FR.id=edges.from_node_id
                 join nodes  T on T.id=edges.to_node_id
                 where edges.from_node_id = %d;'''%(node))
     for row in c:
-        graph.add_edge(pydot.Edge(str(row[0]), str(row[2])))
+        e = pydot.Edge(str(row[0]), str(row[1]), label=str(row[2]))
+        graph.add_edge(e)
 
 graph.write_png("mygraph.png")
 
