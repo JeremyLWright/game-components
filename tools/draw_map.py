@@ -8,7 +8,7 @@ nodes = conn.cursor()
 nodes.execute('''select id from nodes''')
 for node in nodes:
     c = conn.cursor()
-    c.execute('''select FR.id, T.id, edges.weight
+    c.execute('''select FR.name, T.name, edges.weight
                 from edges 
                 join nodes  FR on FR.id=edges.from_node_id
                 join nodes  T on T.id=edges.to_node_id
