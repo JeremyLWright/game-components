@@ -37,6 +37,11 @@
 </string>
        </void>
       </void>
+      <void property="methods">
+       <void property="text">
+        <string>+ GetPath(Source : Node&amp;, Destination : Node&amp;) : std::list&lt;Edge&amp;&gt;</string>
+       </void>
+      </void>
       <void property="name">
        <void property="text">
         <string>Map</string>
@@ -179,7 +184,7 @@ Destination : Node&amp;</string>
    </object>
    <object class="java.awt.geom.Point2D$Double">
     <void method="setLocation">
-     <double>140.0</double>
+     <double>0.0</double>
      <double>40.0</double>
     </void>
    </object>
@@ -197,8 +202,8 @@ Destination : Node&amp;</string>
    <object idref="ClassNode1"/>
    <object class="java.awt.geom.Point2D$Double">
     <void method="setLocation">
-     <double>218.0</double>
-     <double>413.0</double>
+     <double>5.0</double>
+     <double>398.0</double>
     </void>
    </object>
   </void>
