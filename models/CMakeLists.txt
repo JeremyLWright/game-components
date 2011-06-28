@@ -1,0 +1,13 @@
+cmake_minimum_required (VERSION 2.8)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+find_package(GTest)
+file(GLOB SOURCE_FILES "*.cpp")
+file(GLOB MODEL_TESTS "tests/*.cpp")
+add_library(models STATIC ${SOURCE_FILES})
+if(GTEST_FOUND)
+    add_custom_target(test COMMAND test_model DEPENDS test_model)
+    add_executable(test_model ${MODEL_TESTS})
+    target_link_libraries(test_model models)
+    target_link_libraries(test_model ${GTEST_BOTH_LIBRARIES} pthread)
+endif(GTEST_FOUND) 
