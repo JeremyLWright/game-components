@@ -29,7 +29,7 @@ add_subdirectory(views)
 add_subdirectory(controllers)
 # Build the executable
 add_executable(main main.cpp)
-target_link_libraries(main models views controllers)
+target_link_libraries(main models views controllers pthread dl)
 if(0)
 if(GTEST_FOUND)
     add_custom_target(test COMMAND test_${PROJECT_NAME} DEPENDS test_${PROJECT_NAME})

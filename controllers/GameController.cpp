@@ -1,5 +1,7 @@
 #include "GameController.h"
 #include "views/ConsoleView.h"
+#include "models/SqliteDialogTreeModel.h"
+#include "models/DialogTreeModel.h"
 namespace Practicum {
     namespace Controller {
         GameController::Ptr GameController::construct()
@@ -15,10 +17,11 @@ namespace Practicum {
         void GameController::Run()
         {
             //Open the Game's Models
-            
+            Models::DialogTreeModel::Ptr dialogModel = Models::SqliteDialogTreeModel::construct(1);
             //Open the Game's Main View.
             View::ConsoleView::Ptr userView = View::ConsoleView::construct();
-            userView->SendMessage("Welcome to the C++ Choose Your Own Adventure.");
+            userView->SendMessage(dialogModel->GetStatement());
+//            userView->SendMessage("Welcome to the C++ Choose Your Own Adventure.");
             vector<string> menu;
             menu.push_back("Load Game.");
             menu.push_back("Quit");

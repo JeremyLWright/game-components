@@ -1,10 +1,11 @@
 cmake_minimum_required (VERSION 2.8)
-
+include(ExternalProject)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 find_package(GTest)
 file(GLOB SOURCE_FILES "*.cpp")
 file(GLOB MODEL_TESTS "tests/*.cpp")
-add_library(models STATIC ${SOURCE_FILES})
+include_directories(${SOURCE_DIR})
+add_library(models STATIC ${SOURCE_FILES} sqlite3.c)
 if(GTEST_FOUND)
     add_custom_target(test COMMAND test_model DEPENDS test_model)
     add_executable(test_model ${MODEL_TESTS})
