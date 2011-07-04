@@ -20,8 +20,12 @@ namespace Practicum {
             Models::DialogTreeModel::Ptr dialogModel = Models::SqliteDialogTreeModel::construct(1);
             //Open the Game's Main View.
             View::ConsoleView::Ptr userView = View::ConsoleView::construct();
-            userView->SendMessage(dialogModel->GetStatement());
-//            userView->SendMessage("Welcome to the C++ Choose Your Own Adventure.");
+            string s;
+            while(dialogModel->GetStatement(s))
+            {
+                userView->SendMessage(s);
+            }
+            //            userView->SendMessage("Welcome to the C++ Choose Your Own Adventure.");
             vector<string> menu;
             menu.push_back("Load Game.");
             menu.push_back("Quit");

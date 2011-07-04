@@ -18,7 +18,7 @@ namespace Practicum {
             public:
             typedef std::tr1::shared_ptr<DialogTreeModel> Ptr;
             typedef std::tr1::weak_ptr<DialogTreeModel> WeakPtr;
-                virtual string GetStatement() = 0;
+                virtual bool GetStatement(string&) = 0;
                 virtual string GetOptions() = 0;
             private:
 

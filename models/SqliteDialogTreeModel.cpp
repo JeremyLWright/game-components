@@ -19,34 +19,7 @@ namespace {
             return !(iss >> f >> t).fail();
         }
     char const * DB_NAME = "World.db";
-    string DIALOG_QUERY(int id) 
-    {
-        stringstream query;
-        query << "SELECT * FROM dialog where id=";
-        query << id;
-        return query.str();
-
-    }
     sqlite3* db_conn;
-    int lock;
-    int nextStatementId;
-    stringstream statement;
-
-    int callback(void* unused ,int argc,char** argv ,char** colName)
-    {
-         int i;
-         statement.clear();
-         statement << argv[1];
-         from_string<int>(nextStatementId, argv[0], std::dec);
-         for(i=0; i<argc; i++)
-         {
-             printf("%s = %s\n", colName[i], argv[i] ? argv[i] : "NULL");
-         }
-         printf("\n");
-         lock = 0;
-         return 0;
-    }
-
 
 }
 
@@ -68,7 +41,6 @@ namespace Practicum {
         SqliteDialogTreeModel::Ptr SqliteDialogTreeModel::construct(int treeIdx)
         {
             int ret = sqlite3_open(DB_NAME, &db_conn);
-            lock = 0;
             if(ret == SQLITE_OK)
             {
                 cout << "Opened DB." << endl;
@@ -81,23 +53,29 @@ namespace Practicum {
 
         }
 
-        string SqliteDialogTreeModel::GetStatement()
+        bool SqliteDialogTreeModel::GetStatement(string& dialog)
         {
-            lock = 1;
-            {
+            if(!_treeIdx)
+                return false; 
+        
                 stringstream s;
-                s << "SELECT * FROM dialog where id=" << _treeIdx;
+                s << "SELECT * FROM dialog WHERE id=" << _treeIdx;
                 const string& tmp = s.str();
                 const char* query = tmp.c_str();
-            char * zErrMsg;
-            int rc = sqlite3_exec(db_conn, query, callback, 0,&zErrMsg);
-            if(rc != SQLITE_OK)
-                cout << zErrMsg << endl;
-            else
-                while(lock == 1); //Wait for the callback to complete. 
+                sqlite3_stmt* compiled_query;
+                char const* unused;
+                sqlite3_prepare_v2(db_conn, query, tmp.size(), &compiled_query, &unused);
+                s.clear();
+        
+            stringstream dialogStream;
+            while(SQLITE_DONE != sqlite3_step(compiled_query))
+            {
+                _treeIdx = sqlite3_column_int(compiled_query, 2);
+                dialogStream << sqlite3_column_text(compiled_query, 1);
             }
-
-            return statement.str();
+            sqlite3_finalize(compiled_query);
+            dialog = dialogStream.str();
+            return true;
         }
 
         string SqliteDialogTreeModel::GetOptions()

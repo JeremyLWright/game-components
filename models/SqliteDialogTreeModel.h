@@ -20,7 +20,7 @@ namespace Practicum {
             typedef std::tr1::weak_ptr<SqliteDialogTreeModel> WeakPtr;
             static SqliteDialogTreeModel::Ptr construct(int treeIdx);
             virtual ~SqliteDialogTreeModel();
-            virtual string GetStatement();
+            virtual bool GetStatement(string& dialog);
             virtual string GetOptions();
         private:
             SqliteDialogTreeModel();
