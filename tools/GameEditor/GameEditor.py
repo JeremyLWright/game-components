@@ -25,7 +25,7 @@ class GameEditor(QtGui.QMainWindow):
                 QtGui.QDialog.__init__(self,parent)
                 self.setupUi(self)
             def GetValues(self):
-                return (self.lineEdit_agentNameBox.text(),)
+                return (self.lineEdit_agentNameBox.text(),self.lineEdit_agentHealthPoints.text(),)
         dlg = NewCharacterDialog()
         if dlg.exec_():
             self.ui.comboBox.addItem(dlg.GetValues()[0])
