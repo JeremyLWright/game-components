@@ -10,6 +10,8 @@ class CommandFactory():
             return ICommand.ExitCommand()
         elif(verb ==  "look"):
             return ICommand.AgentLookCommand(self.agent)
+        elif(verb == "inventory"):
+            return ICommand.AgentListInventory(self.agent)
         noun = parser_tokens[1]
         if(verb == "walk"):
             if(noun == "north"):
@@ -22,6 +24,9 @@ class CommandFactory():
                 return ICommand.GoWestCommand(self.agent)
             else:
                 print "Invalid Direction"
+        if(verb == "take"):
+            return ICommand.AgentTakeCommand(self.agent, noun)
+            
         
 
 
