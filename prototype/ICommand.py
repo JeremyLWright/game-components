@@ -1,4 +1,4 @@
-
+from sys import exit
 class ICommand():
     def Execute(self):
         pass
@@ -34,5 +34,12 @@ class GoWestCommand(ICommand):
     
     def Execute(self):
         self.agent.Go("west")
+
+class ExitCommand(ICommand):
+    def __init__(self):
+        pass
+
+    def Execute(self):
+        exit()
 
 
