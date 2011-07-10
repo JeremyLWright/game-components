@@ -1,4 +1,5 @@
 import json
+import logging
 
 class Map():
     def __init__(self):
@@ -6,39 +7,39 @@ class Map():
         self.rooms = json.load(dat)
 
     def GetStartingPosition(self):
-        return "Other Room"
+        return "Meadow"
+
+    def GetDescription(self, room):
+        logging.debug("Fetching Description for: "+str(room))        
+        return self.rooms[room]["Description"]
 
     def GetNorthPosition(self, currentPosition):
-        if(currentPosition == "Crazy Room"):
-            return "Nasty Room"
-        if(currentPosition == "Nasty Room"):
-            return "Nasty Room"
-        if(currentPosition == "Other Room"):
-            return "Nasty Room"
-
+        if(self.rooms[currentPosition]["North"] == ""):
+            print "You cannot go that way."
+            return currentPosition
+        else:
+            return self.rooms[currentPosition]["North"]
+    
     def GetSouthPosition(self, currentPosition):
-        if(currentPosition == "Crazy Room"):
-            return "Other Room"
-        if(currentPosition == "Nasty Room"):
-            return "Crazy Room"
-        if(currentPosition == "Other Room"):
-            return "Nasty Room"
+        if(self.rooms[currentPosition]["South"] == ""):
+            print "You cannot go that way."
+            return currentPosition
+        else:
+            return self.rooms[currentPosition]["South"]
 
     def GetEastPosition(self, currentPosition):
-        if(currentPosition == "Crazy Room"):
-            return "Nasty Room"
-        if(currentPosition == "Nasty Room"):
-            return "Other Room"
-        if(currentPosition == "Other Room"):
-            return "Crazy Room"
+        if(self.rooms[currentPosition]["East"] == ""):
+            print "You cannot go that way."
+            return currentPosition
+        else:
+            return self.rooms[currentPosition]["East"]
     
     def GetWestPosition(self, currentPosition):
-        if(currentPosition == "Crazy Room"):
-            return "Other Room"
-        if(currentPosition == "Nasty Room"):
-            return "Other Room"
-        if(currentPosition == "Other Room"):
-            return "Crazy Room"
+        if(self.rooms[currentPosition]["West"] == ""):
+            print "You cannot go that way."
+            return currentPosition
+        else:
+            return self.rooms[currentPosition]["West"]
 
 
 
