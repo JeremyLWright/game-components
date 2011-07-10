@@ -39,4 +39,12 @@ class ExitCommand(ICommand):
     def Execute(self):
         exit()
 
+class AgentLookCommand(ICommand):
+    def __init__(self, agent):
+        self.agent = agent
+
+    def Execute(self):
+        self.agent.Look()
+
+
 

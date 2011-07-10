@@ -27,4 +27,8 @@ class Agent():
         self.position.UpdatePosition(direction)
         print self.position.rooms.rooms[self.position.position]
 
+    def Look(self):
+        print self.position.rooms.rooms[self.position.position]
+
+
 
