@@ -49,11 +49,13 @@ class Agent():
         self.OutputPosition(self.position)
 
     def TakeItem(self, item):
-        roomItems = self.position.rooms.GetItems(self.position.position)
-        if item in roomItems:
+        if(self.position.rooms.TakeItem(item, self.position.position)):
             self.inventory.AddItem(item)
         else:
             print "You cannot take that item."
+    def DropItem(self, item):
+        self.inventory.DropItem(item)
+        self.position.rooms.DropItem(item, self.position.position)
 
     def Look(self):
         self.OutputPosition(self.position)

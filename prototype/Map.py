@@ -44,5 +44,16 @@ class Map():
         else:
             return self.rooms[currentPosition]["West"]
 
+    def TakeItem(self, item, currentPosition):
+        items = self.GetItems(currentPosition)
+        if item in items:
+            self.rooms[currentPosition]["Items"].pop(self.rooms[currentPosition]["Items"].index(item))
+            return True
+        return False
+            
+    def DropItem(self, item, currentPosition):
+        self.rooms[currentPosition]["Items"].append(item)
+        
+
 
 

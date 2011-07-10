@@ -61,3 +61,10 @@ class AgentListInventory(ICommand):
     def Execute(self):
         self.agent.ListInventory()
 
+class AgentDropCommand(ICommand):
+    def __init__(self, agent, item):
+        self.agent = agent
+        self.item = item
+
+    def Execute(self):
+        self.agent.DropItem(self.item)

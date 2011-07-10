@@ -26,6 +26,8 @@ class CommandFactory():
                 print "Invalid Direction"
         if(verb == "take"):
             return ICommand.AgentTakeCommand(self.agent, noun)
+        if(verb == "drop"):
+            return ICommand.AgentDropCommand(self.agent, noun)
             
         
 
