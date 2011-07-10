@@ -1,6 +1,68 @@
 { 
-    "Crazy Room": "You have entered the crazy room. There is stuff around you.",
-    "Nasty Room": "You are in the nasty room. Something ie breathing in the dark.",
-    "Other Room": "You will probably be eaten by a grue."
+    "Meadow": {
+                    "Description": "You have entered the Meadow.",
+                    "North": "Meadow",
+                    "South": "Kitchen",
+                    "East": "",
+                    "West": "",
+                    "Items": ["Map", "Leaves"]
+    },
+    "Kitchen":{
+                    "Description": "You have entered the kitchen There is a light over the table.",
+                    "North": "Meadow",
+                    "South": "Living Room",
+                    "East": "Train Tracks",
+                    "West": "Train Oil Car",
+                    "Items": ["Map", "Leaves"]
+    },
+    "Living Room": {
+                    "Description": "You have entered the living room.",
+                    "North": "Kitchen",
+                    "South": "Train Terminal",
+                    "East": "Train Tracks",
+                    "West": "Meadow",
+                    "Items": ["Map", "Leaves"]
+    },
+    "White House": {
+                    "Description": "You have entered the white house.",
+                    "North": "Train Tracks",
+                    "South": "Train Oil Car",
+                    "East": "Meadow",
+                    "West": "Cave",
+                    "Items": ["Map", "Leaves"]
+    },
+    "Cave": {
+                    "Description": "You have entered the Cave." ,
+                    "North": "Kitchen",
+                    "South": "White House",
+                    "East": "Cave",
+                    "West": "Cave",
+                    "Items": ["Map", "Leaves"]
+    },
+    "Train Terminal": {
+                    "Description": "You have entered the train terminal.",
+                    "North": "Living Room",
+                    "South": "White House",
+                    "East": "Cave",
+                    "West": "Living Room",
+                    "Items": ["Map", "Leaves"]
+    },
+    "Train Tracks": {
+                    "Description": "You have entered the train tracks.",
+                    "North": "Cave",
+                    "South": "Train Oil Car",
+                    "East": "Cave",
+                    "West": "Train Terminal",
+                    "Items": ["Map", "Leaves"]
+    },
+    "Train Oil Car": {
+                    "Description": "You have entered the train oil car.",
+                    "North": "Train Terminal",
+                    "South": "Train Tracks",
+                    "East": "Meadow",
+                    "West": "",
+                    "Items": ["Map", "Leaves"]
+    }
+    
 
 }

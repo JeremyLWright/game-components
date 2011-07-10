@@ -23,12 +23,15 @@ class Agent():
         self.name = name
         self.position = Position()
 
+    def OutputPosition(self, position):
+        print position.rooms.GetDescription(position.position)
+
     def Go(self, direction):
         self.position.UpdatePosition(direction)
-        print self.position.rooms.rooms[self.position.position]
+        self.OutputPosition(self.position)
 
     def Look(self):
-        print self.position.rooms.rooms[self.position.position]
+        self.OutputPosition(self.position)
 
 
 
