@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0,'.')
 import logging
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 import Agent
 import ICommand
 import Parser
