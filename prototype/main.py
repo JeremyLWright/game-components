@@ -3,9 +3,11 @@ sys.path.insert(0,'.')
 
 import Agent
 import ICommand
+import Parser
 
-a = Agent.Agent("Jeremy")
-go = ICommand.GoNorthCommand(a)
-go.Execute()
-go = ICommand.GoSouthCommand(a)
-go.Execute()
+j = Agent.Agent("Jeremy")
+p = Parser.Parser()
+while(True):
+    command = p.GetLine(j)
+    command.Execute()
+
