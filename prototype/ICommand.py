@@ -11,7 +11,6 @@ class GoNorthCommand(ICommand):
     def Execute(self):
         self.agent.Go("north")
 
-
 class GoSouthCommand(ICommand):
     def __init__(self, agent):
         self.agent = agent
@@ -19,14 +18,12 @@ class GoSouthCommand(ICommand):
     def Execute(self):
         self.agent.Go("south")
 
-
 class GoEastCommand(ICommand):
     def __init__(self, agent):
         self.agent = agent
     
     def Execute(self):
         self.agent.Go("east")
-
 
 class GoWestCommand(ICommand):
     def __init__(self, agent):

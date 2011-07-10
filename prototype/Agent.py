@@ -1,18 +1,20 @@
+from Map import Map
+
 class Position():
     def __init__(self):
-        self.pos = (0,0,)
+        self.rooms = Map()
+        self.position = self.rooms.GetStartingPosition()
+        
 
     def UpdatePosition(self, direction):
-        print "Updating position."
-        print "Moving %s"%(direction)
         if(direction == "north"):
-            self.pos = (self.pos[0], self.pos[1]+1,)
+            self.position = self.rooms.GetNorthPosition(self.position)
         elif(direction == "south"):
-            self.pos = (self.pos[0], self.pos[1]-1,)
+            self.position = self.rooms.GetSouthPosition(self.position)
         elif(direction == "east"):
-            self.pos = (self.pos[0]+1, self.pos[1],)
+            self.position = self.rooms.GetEastPosition(self.position)
         elif(direction == "west"):
-            self.pos = (self.pos[0]-1, self.pos[1],)
+            self.position = self.rooms.GetWestPosition(self.position)
         else:
             print "Invalid Position"
 
@@ -23,6 +25,6 @@ class Agent():
 
     def Go(self, direction):
         self.position.UpdatePosition(direction)
-        print self.name+"'s Updated position: "+str((self.position.pos))
+        print self.position.rooms.rooms[self.position.position]
 
 
