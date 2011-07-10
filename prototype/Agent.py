@@ -18,20 +18,50 @@ class Position():
         else:
             print "Invalid Position"
 
+class Inventory():
+    def __init__(self):
+        self.items = []
+
+    def GetItems(self):
+        return self.items
+
+    def AddItem(self, item):
+        self.items.append(item)
+
+    def DropItem(self, item):
+        self.items.pop(self.items.index(item))
+
+
 class Agent():
     def __init__(self, name):
         self.name = name
         self.position = Position()
+        self.inventory = Inventory()
 
     def OutputPosition(self, position):
         print position.rooms.GetDescription(position.position)
-
+        print "This room has the following Items:"
+        for item in self.position.rooms.GetItems(self.position.position):
+            print item
+            
     def Go(self, direction):
         self.position.UpdatePosition(direction)
         self.OutputPosition(self.position)
 
+    def TakeItem(self, item):
+        roomItems = self.position.rooms.GetItems(self.position.position)
+        if item in roomItems:
+            self.inventory.AddItem(item)
+        else:
+            print "You cannot take that item."
+
     def Look(self):
         self.OutputPosition(self.position)
+
+    def ListInventory(self):
+        for item in self.inventory.items:
+            print item
+  
 
 
 

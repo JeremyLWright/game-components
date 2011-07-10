@@ -33,6 +33,9 @@ class Map():
             return currentPosition
         else:
             return self.rooms[currentPosition]["East"]
+
+    def GetItems(self, currentPosition):
+        return self.rooms[currentPosition]["Items"]
     
     def GetWestPosition(self, currentPosition):
         if(self.rooms[currentPosition]["West"] == ""):

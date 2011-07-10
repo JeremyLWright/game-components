@@ -46,5 +46,18 @@ class AgentLookCommand(ICommand):
     def Execute(self):
         self.agent.Look()
 
+class AgentTakeCommand(ICommand):
+    def __init__(self, agent, item):
+        self.agent = agent
+        self.item = item
 
+    def Execute(self):
+        self.agent.TakeItem(self.item)
+
+class AgentListInventory(ICommand):
+    def __init__(self, agent):
+        self.agent = agent
+
+    def Execute(self):
+        self.agent.ListInventory()
 
