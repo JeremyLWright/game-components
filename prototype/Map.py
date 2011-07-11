@@ -14,35 +14,35 @@ class Map():
         return self.rooms[room]["Description"]
 
     def GetNorthPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["North"] == ""):
+        if(self.rooms[currentPosition]["North"]["Destination"] == None):
             print "You cannot go that way."
             return currentPosition
         else:
-            return self.rooms[currentPosition]["North"]
+            return self.rooms[currentPosition]["North"]["Destination"]
     
     def GetSouthPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["South"] == ""):
+        if(self.rooms[currentPosition]["South"]["Destination"] == None):
             print "You cannot go that way."
             return currentPosition
         else:
-            return self.rooms[currentPosition]["South"]
+            return self.rooms[currentPosition]["South"]["Destination"]
 
     def GetEastPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["East"] == ""):
+        if(self.rooms[currentPosition]["East"]["Destination"] == None):
             print "You cannot go that way."
             return currentPosition
         else:
-            return self.rooms[currentPosition]["East"]
+            return self.rooms[currentPosition]["East"]["Destination"]
 
     def GetItems(self, currentPosition):
         return self.rooms[currentPosition]["Items"]
     
     def GetWestPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["West"] == ""):
+        if(self.rooms[currentPosition]["West"]["Destination"] == None):
             print "You cannot go that way."
             return currentPosition
         else:
-            return self.rooms[currentPosition]["West"]
+            return self.rooms[currentPosition]["West"]["Destination"]
 
     def TakeItem(self, item, currentPosition):
         items = self.GetItems(currentPosition)
