@@ -17,6 +17,9 @@ class Map():
         if(self.rooms[currentPosition]["North"]["Destination"] == None):
             print "You cannot go that way."
             return currentPosition
+        elif(self.rooms[currentPosition]["North"]["Door"] == True):
+            print "You have to open the door."
+            return currentPosition
         else:
             return self.rooms[currentPosition]["North"]["Destination"]
     
@@ -24,12 +27,18 @@ class Map():
         if(self.rooms[currentPosition]["South"]["Destination"] == None):
             print "You cannot go that way."
             return currentPosition
+        elif(self.rooms[currentPosition]["South"]["Door"] == True):
+            print "You have to open the door."
+            return currentPosition
         else:
             return self.rooms[currentPosition]["South"]["Destination"]
 
     def GetEastPosition(self, currentPosition):
         if(self.rooms[currentPosition]["East"]["Destination"] == None):
             print "You cannot go that way."
+            return currentPosition
+        elif(self.rooms[currentPosition]["East"]["Door"] == True):
+            print "You have to open the door."
             return currentPosition
         else:
             return self.rooms[currentPosition]["East"]["Destination"]
@@ -40,6 +49,9 @@ class Map():
     def GetWestPosition(self, currentPosition):
         if(self.rooms[currentPosition]["West"]["Destination"] == None):
             print "You cannot go that way."
+            return currentPosition
+        elif(self.rooms[currentPosition]["West"]["Door"] == True):
+            print "You have to open the door."
             return currentPosition
         else:
             return self.rooms[currentPosition]["West"]["Destination"]
