@@ -24,10 +24,28 @@ class CommandFactory():
                 return ICommand.GoWestCommand(self.agent)
             else:
                 print "Invalid Direction"
-        if(verb == "take"):
+        elif(verb == "take"):
             return ICommand.AgentTakeCommand(self.agent, noun)
-        if(verb == "drop"):
+        elif(verb == "drop"):
             return ICommand.AgentDropCommand(self.agent, noun)
+        elif(verb == "open"):
+            if(noun == "north"):
+                if(parser_tokens[2] == "door"):
+                    return ICommand.OpenNorthDoorCommand(self.agent)
+            elif(noun == "south"):
+                if(parser_tokens[2] == "door"):
+                    return ICommand.OpenSouthDoorCommand(self.agent)
+            elif(noun == "east"):
+                if(parser_tokens[2] == "door"):
+                    return ICommand.OpenEastDoorCommand(self.agent)
+            elif(noun == "west"):
+                if(parser_tokens[2] == "door"):
+                    return ICommand.OpenWestDoorCommand(self.agent)
+            else:
+                print "Invalid Direction"
+
+
+
             
         
 

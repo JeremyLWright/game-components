@@ -4,6 +4,38 @@ class ICommand():
         pass
 
 
+
+class OpenNorthDoorCommand(ICommand):
+    def __init__(self, agent):
+        self.agent = agent
+    
+    def Execute(self):
+        self.agent.Go("north")
+
+
+class OpenSouthDoorCommand(ICommand):
+    def __init__(self, agent):
+        self.agent = agent
+    
+    def Execute(self):
+        self.agent.Go("south")
+
+
+class OpenEastDoorCommand(ICommand):
+    def __init__(self, agent):
+        self.agent = agent
+    
+    def Execute(self):
+        self.agent.Go("east")
+
+
+class OpenWestDoorCommand(ICommand):
+    def __init__(self, agent):
+        self.agent = agent
+    
+    def Execute(self):
+        self.agent.Go("west")
+
 class GoNorthCommand(ICommand):
     def __init__(self, agent):
         self.agent = agent
