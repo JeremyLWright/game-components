@@ -5,6 +5,10 @@ class Map():
     def __init__(self):
         dat = open("map.json")
         self.rooms = json.load(dat)
+        self.agents = []
+
+    def register(self, agent):
+        self.agents.append(agent)
 
     def GetStartingPosition(self):
         return "Meadow"

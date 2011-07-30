@@ -1,17 +1,18 @@
 import sys
 sys.path.insert(0,'.')
 import logging
-#logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 import Agent
 import ICommand
 import Parser
+import Map
 from CommandFactory import CommandFactory
 
-j = Agent.Agent("Jeremy")
-p = Parser.Parser()
+gameMap = Map.Map()
+j = Agent.Player("Jeremy", gameMap)
 f = CommandFactory(j)
+i = 0
 while(True):
-    tokens = p.GetLine()
-    command = f.GetCommand(tokens)
-    command.Execute()
+    j.FrameTick(i)
+    i = i + 1
 

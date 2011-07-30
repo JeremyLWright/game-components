@@ -1,6 +1,7 @@
 from Map import Map
-
-class Position():
+from Parser import  Parser
+from CommandFactory import CommandFactory
+class Position(object):
     def __init__(self):
         self.rooms = Map()
         self.position = self.rooms.GetStartingPosition()
@@ -18,7 +19,7 @@ class Position():
         else:
             print "Invalid Position"
 
-class Inventory():
+class Inventory(object):
     def __init__(self):
         self.items = []
 
@@ -32,11 +33,13 @@ class Inventory():
         self.items.pop(self.items.index(item))
 
 
-class Agent():
-    def __init__(self, name):
+class Agent(object):
+    def __init__(self, name, map):
         self.name = name
         self.position = Position()
         self.inventory = Inventory()
+        self.map = map;
+        self.map.register(self)
 
     def OutputPosition(self, position):
         print position.rooms.GetDescription(position.position)
@@ -60,10 +63,24 @@ class Agent():
     def Look(self):
         self.OutputPosition(self.position)
 
+    def FrameTick(self, frame):
+        pass
+
     def ListInventory(self):
         for item in self.inventory.items:
             print item
   
+class Player(Agent):
+    def __init__(self, name, map):
+        Agent.__init__(self,name, map)
+        self.parser = Parser(self)
+        self.commandFactory = CommandFactory(self)
 
+    def FrameTick(self, frame):
+        tokens = self.parser.GetLine()
+        command = self.commandFactory.GetCommand(tokens)
+        command.Execute()
+
+    
 
 
