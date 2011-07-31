@@ -6,7 +6,6 @@ import Agent
 import ICommand
 import Parser
 import Map
-from CommandFactory import CommandFactory
 
 gameMap = Map.Map()
 j = Agent.Player("Jeremy", gameMap)
