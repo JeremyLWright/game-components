@@ -1,24 +1,24 @@
 { 
     "Meadow": {
         "Description": "You have entered the Meadow.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Meadow",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "Kitchen",
             "Key": null
         },
-        "East": {
-            "Door": true,
-            "Destination": null,
+        "EAST": {
+            "Door": false,
+            "Destination": "White House",
             "Key": null
         },
-        "West": {
-            "Door": true,
-            "Destination": null,
+        "WEST": {
+            "Door": false,
+            "Destination": "Train Terminal",
             "Key": null
         },
         "Items": ["Map", "Leaves"]
@@ -26,23 +26,23 @@
 
     "Kitchen":{
         "Description": "You have entered the kitchen There is a light over the table.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Meadow",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "Living Room",
             "Key": null
         },
-        "East": {
-            "Door": true,
+        "EAST": {
+            "Door": false,
             "Destination": "Train Tracks",
             "Key": null
         },
-        "West": {
-            "Door": true,
+        "WEST": {
+            "Door": false,
             "Destination": "Train Oil Car",
             "Key": null
         },
@@ -51,23 +51,23 @@
 
     "Living Room": {
         "Description": "You have entered the living room.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Kitchen",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "Train Terminal",
             "Key": null
         },
-        "East": {
-            "Door": true,
+        "EAST": {
+            "Door": false,
             "Destination": "Train Tracks",
             "Key": null
         },
-        "West": {
-            "Door": true,
+        "WEST": {
+            "Door": false,
             "Destination": "Meadow",
             "Key": null
         },
@@ -76,23 +76,23 @@
 
     "White House": {
         "Description": "You have entered the white house.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Train Tracks",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "Train Oil Car",
             "Key": null
         },
-        "East": {
-            "Door": true,
+        "EAST": {
+            "Door": false,
             "Destination": "Meadow",
             "Key": null
         },
-        "West": {
-            "Door": true,
+        "WEST": {
+            "Door": false,
             "Destination": "Cave",
             "Key": null
         },
@@ -101,23 +101,23 @@
 
     "Cave": {
         "Description": "You have entered a cave. You will likely me eaten by a grue.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Kitchen",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "White House",
             "Key": null
         },
-        "East": {
-            "Door": true,
+        "EAST": {
+            "Door": false,
             "Destination": "Cave",
             "Key": null
         },
-        "West": {
-            "Door": true,
+        "WEST": {
+            "Door": false,
             "Destination": "Cave",
             "Key": null
         },
@@ -126,23 +126,23 @@
 
     "Train Terminal": {
         "Description": "You have entered the train terminal.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Living Room",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "White House",
             "Key": null
         },
-        "East": {
-            "Door": true,
+        "EAST": {
+            "Door": false,
             "Destination": "Cave",
             "Key": null
         },
-        "West": {
-            "Door": true,
+        "WEST": {
+            "Door": false,
             "Destination": "Living Room",
             "Key": null
         },
@@ -151,23 +151,23 @@
 
     "Train Tracks": {
         "Description": "You have entered the train tracks.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Meadow",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "Living Room",
             "Key": null
         },
-        "East": {
-            "Door": true,
+        "EAST": {
+            "Door": false,
             "Destination": "Train Tracks",
             "Key": null
         },
-        "West": {
-            "Door": true,
+        "WEST": {
+            "Door": false,
             "Destination": "Train Oil Car",
             "Key": null
         },
@@ -175,24 +175,24 @@
     },
     "Train Oil Car": {
         "Description": "You have entered the train oil car.",
-        "North": {
-            "Door": true,
+        "NORTH": {
+            "Door": false,
             "Destination": "Train Terminal",
             "Key": null
         },
-        "South": {
-            "Door": true,
+        "SOUTH": {
+            "Door": false,
             "Destination": "Train Tracks",
             "Key": null
         },
-        "East": {
-            "Door": true,
+        "EAST": {
+            "Door": false,
             "Destination": "Meadow",
             "Key": null
         },
-        "West": {
-            "Door": true,
-            "Destination": null,
+        "WEST": {
+            "Door": false,
+            "Destination": "Cave",
             "Key": null
         },
         "Items": ["Map", "Leaves"]

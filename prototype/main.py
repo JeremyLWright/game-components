@@ -1,17 +1,21 @@
 import sys
 sys.path.insert(0,'.')
 import logging
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 import Agent
 import ICommand
 import Parser
 import Map
 
 gameMap = Map.Map()
-j = Agent.Player("Jeremy", gameMap)
-f = CommandFactory(j)
-i = 0
+Agent.Player("Jeremy", gameMap)
+Agent.Player("Lindsey", gameMap)
+for npc in range(10):
+    Agent.NPC("Grue"+str(npc), gameMap)
+
+currentFrame = 0
 while(True):
-    j.FrameTick(i)
-    i = i + 1
+    gameMap.FrameTick(currentFrame)
+    currentFrame = currentFrame + 1
+    
 

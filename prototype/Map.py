@@ -1,69 +1,81 @@
 import json
 import logging
 
+class LockedDoorException(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+class ClosedDoorException(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+    
+
 class Map():
     def __init__(self):
         dat = open("map.json")
         self.rooms = json.load(dat)
-        self.agents = []
+        self.agents = {}
 
     def register(self, agent):
-        self.agents.append(agent)
+        self.agents[agent] = self.GetStartingPosition()
+
+    def FrameTick(self, frame):
+        for agent in self.agents:
+            agent.FrameTick(frame)
 
     def GetStartingPosition(self):
         return "Meadow"
 
-    def GetDescription(self, room):
-        logging.debug("Fetching Description for: "+str(room))        
-        return self.rooms[room]["Description"]
+    def OpenDoor(self, agent, direction):
+        agentsPosition = self.agents[agent]
+        if(self.rooms[agentsPosition][direction]["Door"] == True):
+            self.rooms[agentsPosition][direction]["Door"] = False
+        elif(self.rooms[agentsPosition][direction]["Door"] == False):
+            raise ClosedDoorException("You must open the door.")
+        else:
+            agent.view.ReceiveMsg("There is no Door")
 
-    def GetNorthPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["North"]["Destination"] == None):
-            print "You cannot go that way."
-            return currentPosition
-        elif(self.rooms[currentPosition]["North"]["Door"] == True):
-            print "You have to open the door."
-            return currentPosition
-        else:
-            return self.rooms[currentPosition]["North"]["Destination"]
-    
-    def GetSouthPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["South"]["Destination"] == None):
-            print "You cannot go that way."
-            return currentPosition
-        elif(self.rooms[currentPosition]["South"]["Door"] == True):
-            print "You have to open the door."
-            return currentPosition
-        else:
-            return self.rooms[currentPosition]["South"]["Destination"]
+    def DEBUG_WHERE(self, agent):
+        for aagent in self.agents:
+            agent.view.ReceiveMsg(str(aagent.name+": "+self.agents[aagent]))
 
-    def GetEastPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["East"]["Destination"] == None):
-            print "You cannot go that way."
-            return currentPosition
-        elif(self.rooms[currentPosition]["East"]["Door"] == True):
-            print "You have to open the door."
-            return currentPosition
+    def GetDescription(self, agent):
+        logging.debug("Fetching Description for: "+str(agent))        
+        position = self.agents[agent]
+        for npc in self.agents.keys():
+            if npc == agent:
+                pass
+            elif self.agents[npc] == position:
+                agent.view.ReceiveMsg("There is another player, "+npc.name)
+
+        return self.rooms[position]["Description"]
+
+    def UpdatePosition(self, agent, direction):
+        agentsPosition = self.agents[agent]
+        if(self.rooms[agentsPosition][direction]["Destination"] == None):
+            agent.view.ReceiveMsg("You cannot go that way.")
+            return agentsPosition
+        elif(self.rooms[agentsPosition][direction]["Door"] == True):
+            agent.view.ReceiveMsg("You have to open the door")
+            return agentsPosition
         else:
-            return self.rooms[currentPosition]["East"]["Destination"]
+            self.agents[agent] = self.rooms[agentsPosition][direction]["Destination"]
+            return self.agents[agent]
 
     def GetItems(self, currentPosition):
         return self.rooms[currentPosition]["Items"]
     
-    def GetWestPosition(self, currentPosition):
-        if(self.rooms[currentPosition]["West"]["Destination"] == None):
-            print "You cannot go that way."
-            return currentPosition
-        elif(self.rooms[currentPosition]["West"]["Door"] == True):
-            print "You have to open the door."
-            return currentPosition
-        else:
-            return self.rooms[currentPosition]["West"]["Destination"]
-
-    def TakeItem(self, item, currentPosition):
-        items = self.GetItems(currentPosition)
+    def TakeItem(self, item, agent):
+        agentsPosition = self.agents[agent]
+        items = self.GetItems(agentsPosition)
         if item in items:
-            self.rooms[currentPosition]["Items"].pop(self.rooms[currentPosition]["Items"].index(item))
+            self.rooms[agentsPosition]["Items"].pop(self.rooms[agentsPosition]["Items"].index(item))
             return True
         return False
             

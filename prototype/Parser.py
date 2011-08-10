@@ -6,7 +6,7 @@ class Parser():
     def __init__(self, owner):
         self.owner = owner
 
-    def GetLine(self):
-        line = raw_input("(%s) ?> "%(self.owner.name))
+    def GetLine(self, frame):
+        line = raw_input("(%s:%d) ?> "%(self.owner.name, frame))
         items = line.split()
         return items
