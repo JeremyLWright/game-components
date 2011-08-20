@@ -10,8 +10,9 @@ class GameEditor(QtGui.QMainWindow):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        data = open("../../prototype/map.json", "rw")
+        data = open("world.json", "rw")
         self.db = json.load(data)
+        data.close()
 
         QtCore.QObject.connect(self.ui.buttonSaveDescription, QtCore.SIGNAL('clicked()'), self.CommitDialogText)
         QtCore.QObject.connect(self.ui.buttonNewLocation, QtCore.SIGNAL('clicked()'), self.NewLocation)
@@ -19,7 +20,13 @@ class GameEditor(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.comboBoxSouthExit, QtCore.SIGNAL('currentIndexChanged(QString)'), self.SouthExitChanged)
         QtCore.QObject.connect(self.ui.comboBoxEastExit, QtCore.SIGNAL('currentIndexChanged(QString)'), self.EastExitChanged)
         QtCore.QObject.connect(self.ui.comboBoxWestExit, QtCore.SIGNAL('currentIndexChanged(QString)'), self.WestExitChanged)
-
+        QtCore.QObject.connect(self.ui.listWidgetLocations, QtCore.SIGNAL('currentTextChanged(QString)'), self.locationSelected)
+        QtCore.QObject.connect(self.ui.pushButtonRenameLocation, QtCore.SIGNAL('clicked()'), self.renameLocation)
+        
+        self.ui.comboBoxNorthExit.addItem("")
+        self.ui.comboBoxSouthExit.addItem("")
+        self.ui.comboBoxEastExit.addItem("")
+        self.ui.comboBoxWestExit.addItem("")
         for room in self.db.keys():
             self.ui.comboBoxNorthExit.addItem(room)
             self.ui.comboBoxSouthExit.addItem(room)
@@ -27,23 +34,82 @@ class GameEditor(QtGui.QMainWindow):
             self.ui.comboBoxWestExit.addItem(room)
             self.ui.listWidgetLocations.addItem(room)
 
+    def renameLocation(self):
+        currentLocationName = self.getCurrentLocationSelection()
+        newLocationName = str(self.ui.lineEditRenameLocation.text())
+        self.db[newLocationName] = self.db[currentLocationName]
+        del self.db[currentLocationName]
+        self.ui.listWidgetLocations.currentItem().setText(newLocationName)
+        self.renameComboBox(self.ui.comboBoxNorthExit, currentLocationName, newLocationName)
+
+    
+    def renameComboBox(self, comboBox, oldLocation, newLocation):
+        idx = comboBox.findText(oldLocation)
+        comboBox.removeItem(idx)
+        comboBox.addItem(newLocation)
+
+    def saveDatabase(self):
+        data = open("world.json", "w")
+        jsonData = json.dumps(self.db, sort_keys=True, indent=4)
+        data.write(jsonData)
+        data.close()
+
     def CommitDialogText(self):
         print "Saving Dialog to Database."
+        self.saveDatabase()
 
+    def setExitComboBox(self, comboBox, location, direction):
+        try:
+            exits = self.db[str(location)]["Exits"]
+            exit = exits[direction]
+            exitIndex = comboBox.findText(exit)
+            comboBox.setCurrentIndex(exitIndex)
+        except:
+            comboBox.setCurrentIndex(comboBox.findText(""))
+
+
+    def locationSelected(self, location):
+        print str(location)+" selected"
+        exits = self.db[str(location)]["Exits"]
+        self.ui.plainTextEdit.setPlainText(self.db[str(location)]["Description"])
+        self.setExitComboBox(self.ui.comboBoxNorthExit, location, "North")
+        self.setExitComboBox(self.ui.comboBoxSouthExit, location, "South")
+        self.setExitComboBox(self.ui.comboBoxEastExit, location, "East")
+        self.setExitComboBox(self.ui.comboBoxWestExit, location, "West")
+
+    def getCurrentLocationSelection(self):
+        return str(self.ui.listWidgetLocations.currentItem().text())
+
+    
     def SouthExitChanged(self, string):
-        print "South Changed"
+        currentLocation = self.getCurrentLocationSelection()
+        self.db[currentLocation]["Exits"]["South"] = str(string)
 
     def EastExitChanged(self, string):
-        print "East Changed"
+        currentLocation = self.getCurrentLocationSelection()
+        self.db[currentLocation]["Exits"]["East"] = str(string)
 
     def WestExitChanged(self, string):
-        print "West Changed"
+        currentLocation = self.getCurrentLocationSelection()
+        self.db[currentLocation]["Exits"]["West"] = str(string)
 
     def NorthExitChanged(self, string):
-        print "North Changed"
+        currentLocation = self.getCurrentLocationSelection()
+        self.db[currentLocation]["Exits"]["North"] = str(string)
 
     def NewLocation(self):
-        print "New Trigger Added."
+        newLocation = str(self.ui.lineEditNewLocation.text())
+        self.ui.comboBoxNorthExit.addItem(newLocation)
+        self.ui.comboBoxSouthExit.addItem(newLocation)
+        self.ui.comboBoxEastExit.addItem(newLocation)
+        self.ui.comboBoxWestExit.addItem(newLocation)
+        self.ui.listWidgetLocations.addItem(newLocation)
+        self.db[newLocation] = {};
+        self.db[newLocation]["Description"] = None
+        self.db[newLocation]["Items"] = []
+        self.db[newLocation]["Exits"] = {"North": None, "East": None, "South": None, "West": None}
+
+
 
     def NewLocationExit(self):
         print "New Trigger Added."

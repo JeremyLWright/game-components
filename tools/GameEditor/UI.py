@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GameEditor.ui'
 #
-# Created: Fri Aug 19 21:37:32 2011
+# Created: Fri Aug 19 23:17:01 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.buttonSaveDescription.setGeometry(QtCore.QRect(590, 360, 97, 27))
         self.buttonSaveDescription.setObjectName(_fromUtf8("buttonSaveDescription"))
         self.buttonNewLocation = QtGui.QPushButton(self.centralwidget)
-        self.buttonNewLocation.setGeometry(QtCore.QRect(720, 650, 111, 27))
+        self.buttonNewLocation.setGeometry(QtCore.QRect(900, 650, 141, 27))
         self.buttonNewLocation.setObjectName(_fromUtf8("buttonNewLocation"))
         self.groupBox = QtGui.QGroupBox(self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(10, 350, 321, 221))
@@ -66,8 +66,17 @@ class Ui_MainWindow(object):
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_4)
         self.listWidgetLocations = QtGui.QListWidget(self.centralwidget)
-        self.listWidgetLocations.setGeometry(QtCore.QRect(710, 10, 256, 631))
+        self.listWidgetLocations.setGeometry(QtCore.QRect(710, 10, 331, 631))
         self.listWidgetLocations.setObjectName(_fromUtf8("listWidgetLocations"))
+        self.lineEditNewLocation = QtGui.QLineEdit(self.centralwidget)
+        self.lineEditNewLocation.setGeometry(QtCore.QRect(710, 650, 181, 27))
+        self.lineEditNewLocation.setObjectName(_fromUtf8("lineEditNewLocation"))
+        self.pushButtonRenameLocation = QtGui.QPushButton(self.centralwidget)
+        self.pushButtonRenameLocation.setGeometry(QtCore.QRect(900, 680, 141, 27))
+        self.pushButtonRenameLocation.setObjectName(_fromUtf8("pushButtonRenameLocation"))
+        self.lineEditRenameLocation = QtGui.QLineEdit(self.centralwidget)
+        self.lineEditRenameLocation.setGeometry(QtCore.QRect(710, 680, 181, 27))
+        self.lineEditRenameLocation.setObjectName(_fromUtf8("lineEditRenameLocation"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1049, 25))
@@ -92,12 +101,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Practicum Game Editor", None, QtGui.QApplication.UnicodeUTF8))
         self.buttonSaveDescription.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonNewLocation.setText(QtGui.QApplication.translate("MainWindow", "New Location", None, QtGui.QApplication.UnicodeUTF8))
+        self.buttonNewLocation.setText(QtGui.QApplication.translate("MainWindow", "Add New Location", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("MainWindow", "Exits", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("MainWindow", "North", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "East", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("MainWindow", "South", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("MainWindow", "West", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonRenameLocation.setText(QtGui.QApplication.translate("MainWindow", "Rename Location", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOpen_Database.setText(QtGui.QApplication.translate("MainWindow", "Open Database", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuit.setText(QtGui.QApplication.translate("MainWindow", "Quit", None, QtGui.QApplication.UnicodeUTF8))

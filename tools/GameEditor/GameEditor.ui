@@ -43,14 +43,14 @@
    <widget class="QPushButton" name="buttonNewLocation">
     <property name="geometry">
      <rect>
-      <x>720</x>
+      <x>900</x>
       <y>650</y>
-      <width>111</width>
+      <width>141</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>New Location</string>
+     <string>Add New Location</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox">
@@ -129,8 +129,41 @@
      <rect>
       <x>710</x>
       <y>10</y>
-      <width>256</width>
+      <width>331</width>
       <height>631</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditNewLocation">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>650</y>
+      <width>181</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonRenameLocation">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>680</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rename Location</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditRenameLocation">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>680</y>
+      <width>181</width>
+      <height>27</height>
      </rect>
     </property>
    </widget>
