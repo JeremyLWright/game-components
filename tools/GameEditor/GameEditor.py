@@ -10,9 +10,22 @@ class GameEditor(QtGui.QMainWindow):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        data = open("world.json", "rw")
-        self.db = json.load(data)
-        data.close()
+        self.ui.comboBoxNorthExit.addItem("")
+        self.ui.comboBoxSouthExit.addItem("")
+        self.ui.comboBoxEastExit.addItem("")
+        self.ui.comboBoxWestExit.addItem("")
+        try:
+            data = open("world.json", "r")
+            self.db = json.load(data)
+            data.close()
+            for room in self.db.keys():
+                self.ui.comboBoxNorthExit.addItem(room)
+                self.ui.comboBoxSouthExit.addItem(room)
+                self.ui.comboBoxEastExit.addItem(room)
+                self.ui.comboBoxWestExit.addItem(room)
+                self.ui.listWidgetLocations.addItem(room)
+        except:
+            self.db = {}
 
         QtCore.QObject.connect(self.ui.buttonSaveDescription, QtCore.SIGNAL('clicked()'), self.CommitDialogText)
         QtCore.QObject.connect(self.ui.buttonNewLocation, QtCore.SIGNAL('clicked()'), self.NewLocation)
@@ -23,16 +36,6 @@ class GameEditor(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.listWidgetLocations, QtCore.SIGNAL('currentTextChanged(QString)'), self.locationSelected)
         QtCore.QObject.connect(self.ui.pushButtonRenameLocation, QtCore.SIGNAL('clicked()'), self.renameLocation)
         
-        self.ui.comboBoxNorthExit.addItem("")
-        self.ui.comboBoxSouthExit.addItem("")
-        self.ui.comboBoxEastExit.addItem("")
-        self.ui.comboBoxWestExit.addItem("")
-        for room in self.db.keys():
-            self.ui.comboBoxNorthExit.addItem(room)
-            self.ui.comboBoxSouthExit.addItem(room)
-            self.ui.comboBoxEastExit.addItem(room)
-            self.ui.comboBoxWestExit.addItem(room)
-            self.ui.listWidgetLocations.addItem(room)
 
     def renameLocation(self):
         currentLocationName = self.getCurrentLocationSelection()
@@ -49,7 +52,8 @@ class GameEditor(QtGui.QMainWindow):
         comboBox.addItem(newLocation)
 
     def saveDatabase(self):
-        data = open("world.json", "w")
+        filename = str(self.ui.lineEditFilename.text())
+        data = open(filename, "w")
         jsonData = json.dumps(self.db, sort_keys=True, indent=4)
         data.write(jsonData)
         data.close()
@@ -71,6 +75,7 @@ class GameEditor(QtGui.QMainWindow):
     def locationSelected(self, location):
         print str(location)+" selected"
         exits = self.db[str(location)]["Exits"]
+        self.ui.lineEditRenameLocation.setText(str(location))
         self.ui.plainTextEdit.setPlainText(self.db[str(location)]["Description"])
         self.setExitComboBox(self.ui.comboBoxNorthExit, location, "North")
         self.setExitComboBox(self.ui.comboBoxSouthExit, location, "South")
@@ -105,9 +110,9 @@ class GameEditor(QtGui.QMainWindow):
         self.ui.comboBoxWestExit.addItem(newLocation)
         self.ui.listWidgetLocations.addItem(newLocation)
         self.db[newLocation] = {};
-        self.db[newLocation]["Description"] = None
+        self.db[newLocation]["Description"] = ""
         self.db[newLocation]["Items"] = []
-        self.db[newLocation]["Exits"] = {"North": None, "East": None, "South": None, "West": None}
+        self.db[newLocation]["Exits"] = {"North": "", "East": "", "South": "", "West": ""}
 
 
 

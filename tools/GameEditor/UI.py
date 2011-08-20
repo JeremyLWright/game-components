@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GameEditor.ui'
 #
-# Created: Fri Aug 19 23:17:01 2011
+# Created: Fri Aug 19 23:33:41 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         self.plainTextEdit.setGeometry(QtCore.QRect(10, 10, 691, 331))
         self.plainTextEdit.setObjectName(_fromUtf8("plainTextEdit"))
         self.buttonSaveDescription = QtGui.QPushButton(self.centralwidget)
-        self.buttonSaveDescription.setGeometry(QtCore.QRect(590, 360, 97, 27))
+        self.buttonSaveDescription.setGeometry(QtCore.QRect(500, 680, 97, 27))
         self.buttonSaveDescription.setObjectName(_fromUtf8("buttonSaveDescription"))
         self.buttonNewLocation = QtGui.QPushButton(self.centralwidget)
         self.buttonNewLocation.setGeometry(QtCore.QRect(900, 650, 141, 27))
@@ -77,6 +77,12 @@ class Ui_MainWindow(object):
         self.lineEditRenameLocation = QtGui.QLineEdit(self.centralwidget)
         self.lineEditRenameLocation.setGeometry(QtCore.QRect(710, 680, 181, 27))
         self.lineEditRenameLocation.setObjectName(_fromUtf8("lineEditRenameLocation"))
+        self.lineEditFilename = QtGui.QLineEdit(self.centralwidget)
+        self.lineEditFilename.setGeometry(QtCore.QRect(222, 680, 261, 27))
+        self.lineEditFilename.setObjectName(_fromUtf8("lineEditFilename"))
+        self.label_5 = QtGui.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(140, 680, 101, 20))
+        self.label_5.setObjectName(_fromUtf8("label_5"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1049, 25))
@@ -108,6 +114,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(QtGui.QApplication.translate("MainWindow", "South", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("MainWindow", "West", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButtonRenameLocation.setText(QtGui.QApplication.translate("MainWindow", "Rename Location", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("MainWindow", "World File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOpen_Database.setText(QtGui.QApplication.translate("MainWindow", "Open Database", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuit.setText(QtGui.QApplication.translate("MainWindow", "Quit", None, QtGui.QApplication.UnicodeUTF8))
