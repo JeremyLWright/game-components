@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>799</width>
-    <height>600</height>
+    <width>1049</width>
+    <height>780</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,91 +17,121 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton_NewCharacter">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>40</y>
-      <width>97</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>New</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_NewTrigger">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>520</y>
-      <width>97</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>New Trigger</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>10</y>
-      <width>67</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Characters</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>10</y>
-      <width>181</width>
-      <height>27</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTreeWidget" name="treeWidget">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>80</y>
-      <width>261</width>
-      <height>431</height>
-     </rect>
-    </property>
-    <column>
-     <property name="text">
-      <string notr="true">1</string>
-     </property>
-    </column>
-   </widget>
    <widget class="QPlainTextEdit" name="plainTextEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
-      <width>511</width>
-      <height>291</height>
+      <y>10</y>
+      <width>691</width>
+      <height>331</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_CommitDialogText">
+   <widget class="QPushButton" name="buttonSaveDescription">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>380</y>
+      <x>590</x>
+      <y>360</y>
       <width>97</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Commit</string>
+     <string>Save</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonNewLocation">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>650</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>New Location</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>321</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Exits</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="formLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>261</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBoxNorthExit"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="comboBoxEastExit"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBoxWestExit"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBoxSouthExit"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>North</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>East</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>South</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>West</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QListWidget" name="listWidgetLocations">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>10</y>
+      <width>256</width>
+      <height>631</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -110,7 +140,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>799</width>
+     <width>1049</width>
      <height>25</height>
     </rect>
    </property>
