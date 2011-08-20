@@ -1,59 +1,52 @@
 {
     "Clearing": {
-        "Description": "You have entered the Clearing", 
+        "Description": "", 
         "Exits": {
-            "North": "Grating Room"
+            "East": "Up a Tree", 
+            "North": "Grating Room", 
+            "South": "Clearing", 
+            "West": ""
         }, 
-        "Items": [
-            "Blanket", 
-            "Leaves"
-        ]
+        "Items": []
     }, 
     "Forest": {
-        "Description": "You have reached impassable mountains", 
+        "Description": "", 
         "Exits": {
-            "North": "Clearing", 
-            "South": "Forest Path"
+            "East": "", 
+            "North": "", 
+            "South": "", 
+            "West": ""
         }, 
         "Items": []
     }, 
     "Forest Path": {
-        "Description": "You are walking along a path less traveled. It is dimly lit. You will likely be eaten by a grue.", 
+        "Description": "", 
         "Exits": {
-            "North": "Clearing"
+            "East": "", 
+            "North": "", 
+            "South": "", 
+            "West": ""
         }, 
-        "Items": [
-            "Grue"
-        ]
+        "Items": []
     }, 
     "Grating Room": {
-        "Description": "You have entered the Grating Room", 
+        "Description": "", 
         "Exits": {
-            "North": "Clearing"
-        }, 
-        "Items": [
-            "Knife", 
-            "Cheese"
-        ]
-    }, 
-    "Mother": {
-        "Description": null, 
-        "Exits": {
-            "East": null, 
-            "North": null, 
-            "South": null, 
-            "West": null
+            "East": "", 
+            "North": "", 
+            "South": "", 
+            "West": ""
         }, 
         "Items": []
     }, 
     "Up a Tree": {
-        "Description": "You are totally in a tree", 
+        "Description": "", 
         "Exits": {
-            "North": "Clearing"
+            "East": "", 
+            "North": "", 
+            "South": "", 
+            "West": ""
         }, 
-        "Items": [
-            "Map", 
-            "Cheshire Cat"
-        ]
+        "Items": []
     }
 }
