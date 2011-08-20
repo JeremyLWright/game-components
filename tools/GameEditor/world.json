@@ -1,0 +1,59 @@
+{
+    "Clearing": {
+        "Description": "You have entered the Clearing", 
+        "Exits": {
+            "North": "Grating Room"
+        }, 
+        "Items": [
+            "Blanket", 
+            "Leaves"
+        ]
+    }, 
+    "Forest": {
+        "Description": "You have reached impassable mountains", 
+        "Exits": {
+            "North": "Clearing", 
+            "South": "Forest Path"
+        }, 
+        "Items": []
+    }, 
+    "Forest Path": {
+        "Description": "You are walking along a path less traveled. It is dimly lit. You will likely be eaten by a grue.", 
+        "Exits": {
+            "North": "Clearing"
+        }, 
+        "Items": [
+            "Grue"
+        ]
+    }, 
+    "Grating Room": {
+        "Description": "You have entered the Grating Room", 
+        "Exits": {
+            "North": "Clearing"
+        }, 
+        "Items": [
+            "Knife", 
+            "Cheese"
+        ]
+    }, 
+    "Mother": {
+        "Description": null, 
+        "Exits": {
+            "East": null, 
+            "North": null, 
+            "South": null, 
+            "West": null
+        }, 
+        "Items": []
+    }, 
+    "Up a Tree": {
+        "Description": "You are totally in a tree", 
+        "Exits": {
+            "North": "Clearing"
+        }, 
+        "Items": [
+            "Map", 
+            "Cheshire Cat"
+        ]
+    }
+}
