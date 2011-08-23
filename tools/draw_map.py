@@ -17,5 +17,5 @@ for room in db.keys():
             e = pydot.Edge(room, db[room]["Exits"][exit],label=str(exit))
             graph.add_edge(e)
 
-graph.write_svg("mygraph.svg")
+graph.write_svg(modelName+".svg")
 
