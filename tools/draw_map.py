@@ -1,20 +1,28 @@
 import pydot
 import sqlite3
+import sys
+import json
 
-conn = sqlite3.connect('../models/World.db')
+modelName = sys.argv[1]
+data = open(modelName, "r")
+db = json.load(data)
+data.close()
+
 
 graph = pydot.Dot('graphname', graph_type='digraph')
-nodes = conn.cursor()
-nodes.execute('''select id from nodes''')
-for node in nodes:
-    c = conn.cursor()
-    c.execute('''select FR.name, T.name, edges.weight
-                from edges 
-                join nodes  FR on FR.id=edges.from_node_id
-                join nodes  T on T.id=edges.to_node_id
-                where edges.from_node_id = %d;'''%(node))
-    for row in c:
-        e = pydot.Edge(str(row[0]), str(row[1]), label=str(row[2]))
+
+for room in db.keys():
+    if(db[room]["Exits"]["East"] != ""):
+        e = pydot.Edge(room, db[room]["Exits"]["East"],label=str("East"))
+        graph.add_edge(e)
+    if(db[room]["Exits"]["West"] != ""):
+        e = pydot.Edge(room, db[room]["Exits"]["West"],label=str("West"))
+        graph.add_edge(e)
+    if(db[room]["Exits"]["North"] != ""):
+        e = pydot.Edge(room, db[room]["Exits"]["North"],label=str("North"))
+        graph.add_edge(e)
+    if(db[room]["Exits"]["South"] != ""):
+        e = pydot.Edge(room, db[room]["Exits"]["South"],label=str("South"))
         graph.add_edge(e)
 
 graph.write_svg("mygraph.svg")
