@@ -5,7 +5,7 @@ import NewCharacter
 import json
 
 class GameEditor(QtGui.QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, defaultDatabase="world.json", parent=None):
         #build parent user interface
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
@@ -15,7 +15,7 @@ class GameEditor(QtGui.QMainWindow):
         self.ui.comboBoxEastExit.addItem("")
         self.ui.comboBoxWestExit.addItem("")
         try:
-            data = open("world.json", "r")
+            data = open(defaultDatabase, "r")
             self.db = json.load(data)
             data.close()
             for room in self.db.keys():
@@ -85,22 +85,35 @@ class GameEditor(QtGui.QMainWindow):
     def getCurrentLocationSelection(self):
         return str(self.ui.listWidgetLocations.currentItem().text())
 
-    
-    def SouthExitChanged(self, string):
+    def addBiDirectionalPath(self, direction, target):
         currentLocation = self.getCurrentLocationSelection()
-        self.db[currentLocation]["Exits"]["South"] = str(string)
+        reverseDirection = ""
+        if(direction == "North"):
+            reverseDirection = "South"
+        elif(direction == "East"):
+            reverseDirection = "West"
+        elif(direction == "West"):
+            reverseDirection = "East"
+        elif(direction == "South"):
+            reverseDirection = "North"
+        else:
+            raise "Invalid direction"
+
+        self.db[currentLocation]["Exits"][direction] = str(target)
+        self.db[str(target)]["Exits"][reverseDirection] = currentLocation
+
+
+    def SouthExitChanged(self, string):
+        self.addBiDirectionalPath("South", string)
 
     def EastExitChanged(self, string):
-        currentLocation = self.getCurrentLocationSelection()
-        self.db[currentLocation]["Exits"]["East"] = str(string)
+        self.addBiDirectionalPath("East", string)
 
     def WestExitChanged(self, string):
-        currentLocation = self.getCurrentLocationSelection()
-        self.db[currentLocation]["Exits"]["West"] = str(string)
+        self.addBiDirectionalPath("West", string)
 
     def NorthExitChanged(self, string):
-        currentLocation = self.getCurrentLocationSelection()
-        self.db[currentLocation]["Exits"]["North"] = str(string)
+        self.addBiDirectionalPath("North", string)
 
     def NewLocation(self):
         newLocation = str(self.ui.lineEditNewLocation.text())
@@ -135,6 +148,6 @@ class GameEditor(QtGui.QMainWindow):
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    myapp = GameEditor()
+    myapp = GameEditor(sys.argv[1])
     myapp.show()
     sys.exit(app.exec_())

@@ -1,0 +1,172 @@
+{
+    "Alter Room": {
+        "Description": "", 
+        "Exits": {
+            "East": "Great Room", 
+            "North": "", 
+            "South": "", 
+            "West": ""
+        }, 
+        "Items": []
+    }, 
+    "Back Office": {
+        "Description": "", 
+        "Exits": {
+            "East": "Gravel Path", 
+            "North": "Bathroom", 
+            "South": "", 
+            "West": "Gift Shop"
+        }, 
+        "Items": []
+    }, 
+    "Bandit's Escape": {
+        "Description": "", 
+        "Exits": {
+            "East": "", 
+            "North": "Worm Crawl", 
+            "South": "South Mountain", 
+            "West": "Bat Cave"
+        }, 
+        "Items": []
+    }, 
+    "Bat Cave": {
+        "Description": "", 
+        "Exits": {
+            "East": "Bandit's Escape", 
+            "North": "Great Hall", 
+            "South": "Great Room", 
+            "West": ""
+        }, 
+        "Items": []
+    }, 
+    "Bathroom": {
+        "Description": "", 
+        "Exits": {
+            "East": "Great Hall", 
+            "North": "", 
+            "South": "Back Office", 
+            "West": ""
+        }, 
+        "Items": []
+    }, 
+    "Cave Tunnel": {
+        "Description": "", 
+        "Exits": {
+            "East": "", 
+            "North": "", 
+            "South": "Patio", 
+            "West": "Great Room"
+        }, 
+        "Items": []
+    }, 
+    "Gift Shop": {
+        "Description": "", 
+        "Exits": {
+            "East": "Back Office", 
+            "North": "", 
+            "South": "", 
+            "West": "Patio"
+        }, 
+        "Items": []
+    }, 
+    "Grave": {
+        "Description": "", 
+        "Exits": {
+            "East": "", 
+            "North": "Sheer Cliff", 
+            "South": "", 
+            "West": ""
+        }, 
+        "Items": []
+    }, 
+    "Gravel Path": {
+        "Description": "", 
+        "Exits": {
+            "East": "South Mountain", 
+            "North": "", 
+            "South": "", 
+            "West": "Back Office"
+        }, 
+        "Items": []
+    }, 
+    "Great Hall": {
+        "Description": "", 
+        "Exits": {
+            "East": "", 
+            "North": "", 
+            "South": "Bat Cave", 
+            "West": "Bathroom"
+        }, 
+        "Items": []
+    }, 
+    "Great Room": {
+        "Description": "", 
+        "Exits": {
+            "East": "Cave Tunnel", 
+            "North": "Bat Cave", 
+            "South": "T-Rex Room", 
+            "West": "Alter Room"
+        }, 
+        "Items": []
+    }, 
+    "Parking Lot": {
+        "Description": "", 
+        "Exits": {
+            "East": "Patio", 
+            "North": "", 
+            "South": "", 
+            "West": ""
+        }, 
+        "Items": []
+    }, 
+    "Patio": {
+        "Description": "", 
+        "Exits": {
+            "East": "Gift Shop", 
+            "North": "Cave Tunnel", 
+            "South": "Sheer Cliff", 
+            "West": "Parking Lot"
+        }, 
+        "Items": []
+    }, 
+    "Sheer Cliff": {
+        "Description": "", 
+        "Exits": {
+            "East": "", 
+            "North": "Patio", 
+            "South": "Grave", 
+            "West": "Patio"
+        }, 
+        "Items": []
+    }, 
+    "South Mountain": {
+        "Description": "", 
+        "Exits": {
+            "East": "", 
+            "North": "Bandit's Escape", 
+            "South": "", 
+            "West": "Gravel Path"
+        }, 
+        "Items": []
+    }, 
+    "T-Rex Room": {
+        "Description": "", 
+        "Exits": {
+            "East": "", 
+            "North": "Great Room", 
+            "South": "", 
+            "West": "Worm Crawl"
+        }, 
+        "Items": []
+    }, 
+    "Worm Crawl": {
+        "Description": "", 
+        "Exits": {
+            "East": "T-Rex Room", 
+            "North": "", 
+            "South": "Bandit's Escape", 
+            "West": ""
+        }, 
+        "Items": []
+    }
+}
